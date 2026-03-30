@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base              # Kế thừa từ bản gốc
+namespace: dev              # Tự động đẩy mọi thứ vào namespace dev
+namePrefix: dev-            # Tên app sẽ thành dev-super-app
+images:
+  - name: super-app         # Tìm image tên là super-app
+    newName: 187104821419.dkr.ecr.ap-southeast-1.amazonaws.com/super-app
+    newTag: latest          # Cái này sẽ được Jenkins ghi đè sau
