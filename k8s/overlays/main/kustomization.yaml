@@ -2,11 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base              # Kế thừa từ bản gốc
-namespace: stg              # Tự động đẩy mọi thứ vào namespace stg
-namePrefix: stg-            # Tên app sẽ thành stg-super-app
+namespace: main              # Tự động đẩy mọi thứ vào namespace stg
+namePrefix: main-            # Tên app sẽ thành stg-task-management
 images:
-  - name: super-app         # Tìm image tên là super-app
-    newName: 187104821419.dkr.ecr.ap-southeast-1.amazonaws.com/super-app
+  - name: task-management         # Tìm image tên là task-management
+    newName: 187104821419.dkr.ecr.ap-southeast-1.amazonaws.com/task-management
     newTag: latest          # Cái này sẽ được Jenkins ghi đè sau
 
 commonLabels:

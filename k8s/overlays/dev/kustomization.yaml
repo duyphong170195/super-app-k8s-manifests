@@ -3,8 +3,11 @@ kind: Kustomization
 resources:
   - ../../base              # Kế thừa từ bản gốc
 namespace: dev              # Tự động đẩy mọi thứ vào namespace dev
-namePrefix: dev-            # Tên app sẽ thành dev-super-app
+namePrefix: dev-            # Tên app sẽ thành dev-task-management
 images:
-  - name: super-app         # Tìm image tên là super-app
-    newName: 187104821419.dkr.ecr.ap-southeast-1.amazonaws.com/super-app
+  - name: task-management         # Tìm image tên là task-management
+    newName: 187104821419.dkr.ecr.ap-southeast-1.amazonaws.com/task-management
     newTag: latest          # Cái này sẽ được Jenkins ghi đè sau
+
+commonLabels:
+  env: dev

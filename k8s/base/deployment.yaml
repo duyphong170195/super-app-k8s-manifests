@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task-management
+  template:
+    metadata:
+      labels:
+        app: task-management
+    spec:
+      containers:
+      - name: task-management
+        image: 123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/task-management:placeholder
+        ports:
+        - containerPort: 8080
+        env:
+        - name: JAVA_TOOL_OPTIONS
+          value: "-XX:MaxRAMPercentage=75.0 -XX:+UseG1GC" # Tối ưu RAM cho container
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 20
+          periodSeconds: 5
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
