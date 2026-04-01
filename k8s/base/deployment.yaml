@@ -26,16 +26,18 @@ spec:
         - name: JAVA_TOOL_OPTIONS
           value: "-XX:MaxRAMPercentage=75.0 -XX:+UseG1GC" # Tối ưu RAM cho container
         livenessProbe:
+          failureThreshold: 2
           httpGet:
             path: /task/actuator/health/liveness
             port: 8080
-          initialDelaySeconds: 30
+          initialDelaySeconds: 120
           periodSeconds: 10
         readinessProbe:
+          failureThreshold: 2
           httpGet:
             path: /task/actuator/health/readiness
             port: 8080
-          initialDelaySeconds: 20
+          initialDelaySeconds: 90
           periodSeconds: 5
         resources:
           requests:
