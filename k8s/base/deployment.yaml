@@ -12,6 +12,8 @@ spec:
       labels:
         app: task-management
     spec:
+      imagePullSecrets:       # THÊM DÒNG NÀY
+        - name: ecr-registry-secret # KHỚP VỚI TÊN SECRET VỪA TẠO
       containers:
       - name: task-management
         image: task-management
