@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: task-management
-        image: 123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/task-management:placeholder
+        image: task-management
         ports:
         - containerPort: 8080
         env:
