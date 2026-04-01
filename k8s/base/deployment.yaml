@@ -17,6 +17,9 @@ spec:
       containers:
       - name: task-management
         image: task-management
+        envFrom:
+        - secretRef:
+            name: task-management-secret
         ports:
         - containerPort: 8080
         env:
