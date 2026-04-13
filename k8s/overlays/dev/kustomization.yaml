@@ -7,7 +7,7 @@ namePrefix: dev-
 images:
 - name: task-management
   newName: 187104821419.dkr.ecr.ap-southeast-1.amazonaws.com/task-management
-  newTag: build-28
+  newTag: build-31
 
 commonLabels:
   env: dev
